@@ -13,6 +13,7 @@ COMPOSE_VERSION=`git ls-remote https://github.com/docker/compose | grep refs/tag
 
 LOCAL_DOCKER_TGZ=$CACHE_DIR/docker-$DOCKER_VERSION.tgz
 LOCAL_COMPOSE=$CACHE_DIR/docker-compose-$COMPOSE_VERSION
+rm -f $LOCAL_DOCKER_TGZ $LOCAL_COMPOSE
 
 echo "-----> Using docker CLI $DOCKER_VERSION"
 [ -e $LOCAL_DOCKER_TGZ ] || curl -s https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz -o $LOCAL_DOCKER_TGZ
@@ -21,7 +22,6 @@ echo "-----> Using docker-compose $COMPOSE_VERSION"
 [ -e $LOCAL_COMPOSE ] || curl -s -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > $LOCAL_COMPOSE
 
 echo "-----> Installing binaries under /app/vendor"
-file $LOCAL_DOCKER_TGZ
 tar -zxf $LOCAL_DOCKER_TGZ -C $VENDOR_DIR docker/docker
 cp $LOCAL_COMPOSE $VENDOR_DIR/docker/docker-compose
 chmod 755 $VENDOR_DIR/docker/*
