@@ -14,7 +14,7 @@ COMPOSE_VERSION=1.26.2
 
 LOCAL_DOCKER_TGZ=$CACHE_DIR/docker-$DOCKER_VERSION.tgz
 LOCAL_COMPOSE=$CACHE_DIR/docker-compose-$COMPOSE_VERSION
-#rm -f $LOCAL_DOCKER_TGZ $LOCAL_COMPOSE
+rm -f $LOCAL_DOCKER_TGZ $LOCAL_COMPOSE
 
 echo "-----> Using docker CLI $DOCKER_VERSION"
 [ -e $LOCAL_DOCKER_TGZ ] || curl -s https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz -o $LOCAL_DOCKER_TGZ
