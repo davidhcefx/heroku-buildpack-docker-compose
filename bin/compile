@@ -24,6 +24,7 @@ echo "-----> Installing binaries under /app/vendor"
 tar -zxf $LOCAL_DOCKER_TGZ -C $VENDOR_DIR docker/docker
 cp $LOCAL_COMPOSE $VENDOR_DIR/docker/docker-compose
 chmod 755 $VENDOR_DIR/docker/*
+ls -al docker/docker
 
 echo "-----> Writing .profile.d script"
 mkdir -p $BUILD_DIR/.profile.d
